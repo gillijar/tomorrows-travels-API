@@ -7,7 +7,7 @@ const AttractionSchema = new mongoose.Schema({
     type: String,
     required: [true, "An attraction must have a name"],
     trim: true,
-    maxLength: [40, "An attraction must be 40 or less characters"],
+    maxLength: [60, "An attraction must be 40 or less characters"],
   },
   city: {
     type: String,
