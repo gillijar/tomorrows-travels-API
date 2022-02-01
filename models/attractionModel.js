@@ -104,7 +104,7 @@ AttractionSchema.pre("save", function (next) {
 
 AttractionSchema.virtual("reviews", {
   ref: "review",
-  foreignField: "attraction",
+  foreignField: "destination",
   localField: "_id",
 });
 

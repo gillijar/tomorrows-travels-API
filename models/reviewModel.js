@@ -14,25 +14,16 @@ const ReviewSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
-  attraction: {
+  destination: {
     type: mongoose.Schema.ObjectId,
-    ref: "attraction",
-    required: [true, "Review must belong to an attraction"],
+    ref: "destination",
+    required: [true, "Review must belong to a destination"],
   },
   user: {
-    type: mongoose.Schema.ObjectId,
+    type: String,
     ref: "user",
     required: [true, "Review must belong to a user"],
   },
-});
-
-ReviewSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: "user",
-    select: "name photo",
-  });
-
-  next();
 });
 
 const Review = mongoose.model("review", ReviewSchema);
