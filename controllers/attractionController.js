@@ -83,7 +83,7 @@ exports.createAttraction = async (req, res) => {
 
 exports.getAttraction = catchAsync(async (req, res, next) => {
   const id = req.params.id;
-  const attractions = await Attraction.findById(id);
+  const attractions = await Attraction.findById(id).populate("reviews");
 
   if (!attractions) {
     return next(new AppError("No attraction found with that ID", 404));
