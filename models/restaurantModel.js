@@ -37,10 +37,6 @@ const RestaurantSchema = new mongoose.Schema({
     type: String,
     required: [true, "A restaurant must have a price"],
   },
-  summary: {
-    type: String,
-    trim: true,
-  },
   description: {
     type: String,
     trim: true,

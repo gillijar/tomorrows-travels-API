@@ -39,10 +39,6 @@ const AttractionSchema = new mongoose.Schema(
       type: Number,
       required: [true, "An attraction must have a price. If free just put 0"],
     },
-    summary: {
-      type: String,
-      trim: true,
-    },
     description: {
       type: String,
       trim: true,
