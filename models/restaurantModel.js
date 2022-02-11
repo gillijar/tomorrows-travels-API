@@ -41,13 +41,8 @@ const RestaurantSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  coverImage: {
-    type: String,
-    // required: [true, "An attraction must have one or more cover images"],
-  },
   images: {
     type: [String],
-    // required: [true, "An attraction must have one or more images"],
   },
   createdAt: {
     type: Date,

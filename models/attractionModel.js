@@ -45,7 +45,6 @@ const AttractionSchema = new mongoose.Schema(
     },
     images: {
       type: [String],
-      // required: [true, "An attraction must have one or more images"],
     },
     createdAt: {
       type: Date,
