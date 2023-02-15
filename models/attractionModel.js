@@ -29,6 +29,7 @@ const AttractionSchema = new mongoose.Schema(
     },
     location: {
       type: String,
+      trim: true,
     },
     address: {
       type: String,

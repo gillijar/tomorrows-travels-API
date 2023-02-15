@@ -1,13 +1,13 @@
 const express = require("express");
 const attractionController = require("../controllers/attractionController");
-const authController = require("../controllers/authController");
+const requestController = require("../controllers/requestController");
 
 const router = express.Router();
 
 router
   .route("/")
   .get(attractionController.getAllAttractions)
-  .post(attractionController.createAttraction);
+  .post(requestController.createRequest);
 
 router
   .route("/:id")

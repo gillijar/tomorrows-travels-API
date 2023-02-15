@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 const slugify = require("slugify");
+const validator = require("validator");
 
-const RestaurantSchema = new mongoose.Schema({
+const RequestSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "A restaurant must have a name"],
+    required: [true, "An attraction must have a name"],
     trim: true,
     maxLength: [60, "An attraction must be 40 or less characters"],
   },
@@ -33,11 +33,11 @@ const RestaurantSchema = new mongoose.Schema({
   address: {
     type: String,
     trim: true,
-    required: [true, "Destination must have an address"],
+    required: [true, "An attraction must have an address"],
   },
   price: {
-    type: String,
-    required: [true, "A restaurant must have a price"],
+    type: Number,
+    required: [true, "An attraction must have a price. If free just put 0"],
   },
   description: {
     type: String,
@@ -59,12 +59,9 @@ const RestaurantSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  reviews: {
-    type: [String],
-  },
-  reviewsAmount: {
-    type: Number,
-    default: 0,
+  duration: {
+    type: String,
+    required: false,
   },
   hoursOfOperation: {
     type: String,
@@ -75,26 +72,14 @@ const RestaurantSchema = new mongoose.Schema({
   },
   tag: {
     type: String,
-    required: [true, "A restaurant must have a tag"],
+    required: [true, "An attraction must have a tag"],
   },
   category: {
     type: String,
-    required: [true, "A restaurant must have a category"],
+    required: [true, "An attraction must have a category"],
   },
 });
 
-RestaurantSchema.pre("save", function (next) {
-  const city = this.city;
-  const citySlug = slugify(city, { lower: true });
+const Request = mongoose.model("request", RequestSchema);
 
-  const state = this.state;
-  const stateSlug = slugify(state, { lower: true });
-
-  const locationArr = new Array(citySlug, stateSlug);
-  this.location = locationArr.join("_");
-  next();
-});
-
-const Restaurant = mongoose.model("restaurant", RestaurantSchema);
-
-module.exports = Restaurant;
+module.exports = Request;
